@@ -10,9 +10,17 @@ const Dashboard = () => {
   useAuth();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const decodedToken = jwtDecode(token, process.env.REACT_APP_JWT_SECRET);
-    setUsername(decodedToken.username);
+    try {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const decodedToken = jwtDecode(token, process.env.REACT_APP_JWT_SECRET);
+        setUsername(decodedToken.username);
+      }
+    } catch (err) {
+      localStorage.removeItem('token');
+      navigate('/login');
+    }
+    //eslint-disable-next-line
   }, []);
 
   const handleLogout = () => {
