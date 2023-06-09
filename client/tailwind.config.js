@@ -5,5 +5,10 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  css: {
+    // Change the output path and file name
+    path: 'src/styles/',
+    file: 'tailwind.css',
+  },
 }
 
