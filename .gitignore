@@ -1,4 +1,5 @@
 server/node_modules
+server/.env
 
 #REACT DEFAULT CLIENT
 
@@ -25,3 +26,4 @@ client/yarn-debug.log*
 client/yarn-error.log*
 
 client/src/styles/tailwind.css
+
