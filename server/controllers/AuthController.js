@@ -19,7 +19,9 @@ exports.signup = async (req, res) => {
 
     const savedUser = await newUser.save();
 
-    const token = jwt.sign({ username }, process.env.SECRET);
+    const token = jwt.sign({ username }, process.env.SECRET, {
+      expiresIn: '1h', 
+    });
     res.status(200).json({ token, username: savedUser.username });
   } catch (error) {
     console.error('Error creating user:', error);
@@ -41,7 +43,9 @@ exports.login = async (req, res) => {
       return res.status(400).json({ message: 'Invalid username or password' });
     }
 
-    const token = jwt.sign({ username }, process.env.SECRET);
+    const token = jwt.sign({ username }, process.env.SECRET, {
+      expiresIn: '1h', 
+    });
     res.status(200).json({ token, username });
   } catch (error) {
     console.error('Error during login:', error);
