@@ -48,7 +48,7 @@ const Dashboard = () => {
     setUploadError('');
 
     try {
-      const response = await uploadPDF(file);
+      const response = await uploadPDF(file, username);
       setPDFs((prevPDFs) => [...prevPDFs, response.data]);
       event.target.value = null; // Reset file input
     } catch (error) {
